@@ -1,0 +1,951 @@
+{
+    "workflow": {
+      "unique_name": "definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY",
+      "name": "CHRIVAND - ThousandEyes Policy Enforcement Verification",
+      "title": "CHRIVAND - ThousandEyes Policy Enforcement Verification",
+      "type": "generic.workflow",
+      "base_type": "workflow",
+      "variables": [
+        {
+          "schema_id": "datatype.string",
+          "properties": {
+            "value": "All agents",
+            "scope": "input",
+            "name": "group_name_to_search",
+            "type": "datatype.string",
+            "is_required": false,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PW2T3WARO7L3JCCzH4DEn6ERIKF7hxFfG",
+          "object_type": "variable_workflow"
+        },
+        {
+          "schema_id": "datatype.string",
+          "properties": {
+            "value": "",
+            "scope": "local",
+            "name": "responseCode",
+            "type": "datatype.string",
+            "is_required": false,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey",
+          "object_type": "variable_workflow"
+        },
+        {
+          "schema_id": "datatype.string",
+          "properties": {
+            "value": "internetbadguys.com",
+            "scope": "input",
+            "name": "observable_value",
+            "type": "datatype.string",
+            "is_required": true,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f",
+          "object_type": "variable_workflow"
+        },
+        {
+          "schema_id": "datatype.string",
+          "properties": {
+            "value": "",
+            "scope": "local",
+            "name": "errorType",
+            "type": "datatype.string",
+            "is_required": false,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP",
+          "object_type": "variable_workflow"
+        },
+        {
+          "schema_id": "datatype.string",
+          "properties": {
+            "value": "domain",
+            "scope": "input",
+            "name": "observable_type",
+            "type": "datatype.string",
+            "is_required": true,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB",
+          "object_type": "variable_workflow"
+        },
+        {
+          "schema_id": "datatype.secure_string",
+          "properties": {
+            "value": "*****",
+            "scope": "local",
+            "name": "webex_token",
+            "type": "datatype.secure_string",
+            "is_required": false,
+            "is_invisible": false
+          },
+          "unique_name": "variable_workflow_01PVOO4WEJIBM34cMOpr3by0URYtFqVMQKt",
+          "object_type": "variable_workflow"
+        }
+      ],
+      "properties": {
+        "atomic": {
+          "is_atomic": false
+        },
+        "delete_workflow_instance": false,
+        "description": "INPUT OBSERVABLES: DOMAIN OR URL\n---\nUse this response action to verify wether a domain or URL is reachable from your ThousandEyes agents (right now it works with *endpoint* agents, but can be easily adjusted for enterprise agents). It creates a instant test to check the reachability to verify your policy enforcement. ",
+        "display_name": "CHRIVAND - ThousandEyes Policy Enforcement Verification",
+        "runtime_user": {
+          "target_default": true
+        },
+        "target": {
+          "no_target": true
+        }
+      },
+      "object_type": "definition_workflow",
+      "actions": [
+        {
+          "unique_name": "definition_activity_01PVXZTO8R8XB35M5T3Z4Mamvp5O1LU7jmo",
+          "name": "Condition Block",
+          "title": "WHAT TYPE OF OBSERVABLE_TYPE?",
+          "type": "logic.if_else",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "display_name": "WHAT TYPE OF OBSERVABLE_TYPE?",
+            "skip_execution": false
+          },
+          "object_type": "definition_activity",
+          "blocks": [
+            {
+              "unique_name": "definition_activity_01PVXZU21UI562AT4MhqTSuGv4fW8UF7IOe",
+              "name": "Condition Branch",
+              "title": "DOMAIN",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB$",
+                  "operator": "eq",
+                  "right_operand": "domain"
+                },
+                "continue_on_failure": false,
+                "display_name": "DOMAIN",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PVY1X7O163M4JhbFNmxLgV8uUn743Cw1Z",
+                  "name": "Set Variables",
+                  "title": "Prepend Domain with HTTPS://",
+                  "type": "core.set_multiple_variables",
+                  "base_type": "activity",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "display_name": "Prepend Domain with HTTPS://",
+                    "skip_execution": false,
+                    "variables_to_update": [
+                      {
+                        "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$",
+                        "variable_value_new": "https://$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$"
+                      }
+                    ]
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            },
+            {
+              "unique_name": "definition_activity_01PVY138J74WF1mLSug6WMf9nQy4B6lC881",
+              "name": "Condition Branch",
+              "title": "no url or domain",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": {
+                    "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB$",
+                    "operator": "ne",
+                    "right_operand": "url"
+                  },
+                  "operator": "or",
+                  "right_operand": {
+                    "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB$",
+                    "operator": "ne",
+                    "right_operand": "domain"
+                  }
+                },
+                "continue_on_failure": false,
+                "display_name": "no url or domain",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PVY1L3ZDCYQ5FK2PEXQMC3LcIRbncrhfW",
+                  "name": "Completed",
+                  "title": "Failed",
+                  "type": "logic.completed",
+                  "base_type": "activity",
+                  "properties": {
+                    "completion_type": "failed-completed",
+                    "continue_on_failure": false,
+                    "display_name": "Failed",
+                    "result_message": "Failed",
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unique_name": "definition_activity_01PW2UDC4YUSJ3tN781mBX9njU6G9IR8IR9",
+          "name": "Group",
+          "title": "Grab group ID of inputted group name",
+          "type": "logic.group",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "description": "Can be skipped if group ID is  known",
+            "display_name": "Grab group ID of inputted group name",
+            "skip_execution": true
+          },
+          "object_type": "definition_activity",
+          "actions": [
+            {
+              "unique_name": "definition_activity_01PW0KHZZQKAW39dYWyEjtXyokwfrMmGIXA",
+              "name": "HTTP Request",
+              "title": "Grab ID of Group",
+              "type": "web-service.http_request",
+              "base_type": "activity",
+              "properties": {
+                "accept": "application/json",
+                "action_timeout": 180,
+                "allow_auto_redirect": true,
+                "content_type": "application/json",
+                "continue_on_error_status_code": false,
+                "continue_on_failure": false,
+                "display_name": "Grab ID of Group",
+                "method": "GET",
+                "relative_url": "/v6/groups/endpoint-agents",
+                "runtime_user": {
+                  "target_default": true
+                },
+                "skip_execution": false,
+                "target": {
+                  "override_workflow_target": true,
+                  "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
+                }
+              },
+              "object_type": "definition_activity"
+            },
+            {
+              "unique_name": "definition_activity_01PW0OBVZ827L1vIpseNRsHjwhgIFYnUigz",
+              "name": "Execute Python Script",
+              "title": "Parse group ID ",
+              "type": "python3.script",
+              "base_type": "activity",
+              "properties": {
+                "action_timeout": 180,
+                "continue_on_failure": false,
+                "display_name": "Parse group ID ",
+                "script": "import json, sys\nresponse_body = json.loads(sys.argv[1])\ngroup_name = sys.argv[2]\nfor label in response_body[\"groups\"]:\n    if label[\"name\"] == group_name:\n        group_id = label[\"groupId\"]",
+                "script_arguments": [
+                  "$activity.definition_activity_01PW0KHZZQKAW39dYWyEjtXyokwfrMmGIXA.output.response_body$",
+                  "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PW2T3WARO7L3JCCzH4DEn6ERIKF7hxFfG$"
+                ],
+                "script_queries": [
+                  {
+                    "script_query": "group_id",
+                    "script_query_name": "group_id",
+                    "script_query_type": "string"
+                  }
+                ],
+                "skip_execution": false
+              },
+              "object_type": "definition_activity"
+            },
+            {
+              "unique_name": "definition_activity_01PW0M5DQZDT559AXQTnxEFAiKL0ZsgF4bK",
+              "name": "Set Variables",
+              "title": "Set group ID Var",
+              "type": "core.set_multiple_variables",
+              "base_type": "activity",
+              "properties": {
+                "continue_on_failure": false,
+                "display_name": "Set group ID Var",
+                "skip_execution": false,
+                "variables_to_update": [
+                  {
+                    "variable_to_update": "$global.variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7.global.variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7$",
+                    "variable_value_new": "$activity.definition_activity_01PW0OBVZ827L1vIpseNRsHjwhgIFYnUigz.output.script_queries.group_id$"
+                  }
+                ]
+              },
+              "object_type": "definition_activity"
+            }
+          ]
+        },
+        {
+          "unique_name": "definition_activity_01PV5CIS4LI6T3iGANXxVIgQeqWpPFpDVxF",
+          "name": "HTTP Request",
+          "title": "Create ThousandEyes Instant Test",
+          "type": "web-service.http_request",
+          "base_type": "activity",
+          "properties": {
+            "accept": "application/json",
+            "action_timeout": 180,
+            "allow_auto_redirect": true,
+            "body": "{\n        \"testName\": \"Test for domain: $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$ - $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.output.start_time$\",\n        \"url\": \"$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$\",\n        \"groupId\": \"$global.variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7.global.variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7$\",\n        \"httpTimeLimit\": 5000,\n        \"targetResponseTime\": 3000,\n        \"maxMachines\": 100,\n        \"sslVersion\": 0,\n        \"verifyCertHostname\": 1\n}",
+            "content_type": "application/json",
+            "continue_on_error_status_code": false,
+            "continue_on_failure": false,
+            "display_name": "Create ThousandEyes Instant Test",
+            "method": "POST",
+            "relative_url": "/v6/endpoint-instant/http-server",
+            "runtime_user": {
+              "target_default": true
+            },
+            "skip_execution": false,
+            "target": {
+              "override_workflow_target": true,
+              "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
+            }
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PV5CVMWX23U2pfJo0ifU0nu8vgE4zkodg",
+          "name": "Condition Block",
+          "title": "HTTP Request Failed?",
+          "type": "logic.if_else",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "display_name": "HTTP Request Failed?",
+            "skip_execution": false
+          },
+          "object_type": "definition_activity",
+          "blocks": [
+            {
+              "unique_name": "definition_activity_01PV5CVTTZ40O2WJUs7C91bIs8CPAc5FJOa",
+              "name": "Condition Branch",
+              "title": "NOT 200",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$activity.definition_activity_01PV5CIS4LI6T3iGANXxVIgQeqWpPFpDVxF.output.status_code$",
+                  "operator": "ne",
+                  "right_operand": 201
+                },
+                "continue_on_failure": false,
+                "display_name": "NOT 200",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PV5D79XB46V0a1EtCQqw0ZfObg4Pr2OiL",
+                  "name": "Completed",
+                  "title": "Failed",
+                  "type": "logic.completed",
+                  "base_type": "activity",
+                  "properties": {
+                    "completion_type": "failed-completed",
+                    "continue_on_failure": false,
+                    "display_name": "Failed",
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unique_name": "definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1",
+          "name": "JSONPath Query",
+          "title": "Grab  Test ID from returned body",
+          "type": "corejava.jsonpathquery",
+          "base_type": "activity",
+          "properties": {
+            "action_timeout": 180,
+            "continue_on_failure": false,
+            "display_name": "Grab  Test ID from returned body",
+            "input_json": "$activity.definition_activity_01PV5CIS4LI6T3iGANXxVIgQeqWpPFpDVxF.output.response_body$",
+            "jsonpath_queries": [
+              {
+                "jsonpath_query": "$.endpointTest[0].testId",
+                "jsonpath_query_name": "testId",
+                "jsonpath_query_type": "string"
+              }
+            ],
+            "skip_execution": false
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PVY40GT8YE65weLhlOS7iGJhlGPZXHKE8",
+          "name": "Sleep",
+          "title": "Sleep 30s",
+          "type": "core.sleep",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "display_name": "Sleep 30s",
+            "skip_execution": false,
+            "sleep_interval": 30
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf",
+          "name": "HTTP Request",
+          "title": "Fetch ThousandEyes Test Results",
+          "type": "web-service.http_request",
+          "base_type": "activity",
+          "properties": {
+            "accept": "application/json",
+            "action_timeout": 180,
+            "allow_auto_redirect": true,
+            "content_type": "application/json",
+            "continue_on_error_status_code": false,
+            "continue_on_failure": false,
+            "display_name": "Fetch ThousandEyes Test Results",
+            "method": "GET",
+            "relative_url": "/v6/endpoint-data/tests/web/http-server/$activity.definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1.output.jsonpath_queries.testId$.json",
+            "runtime_user": {
+              "target_default": true
+            },
+            "skip_execution": false,
+            "target": {
+              "override_workflow_target": true,
+              "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
+            }
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PV5CWVN9D4T2VPSQ428zzmaAr83kKri2u",
+          "name": "Condition Block",
+          "title": "HTTP Request Failed?",
+          "type": "logic.if_else",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "display_name": "HTTP Request Failed?",
+            "skip_execution": false
+          },
+          "object_type": "definition_activity",
+          "blocks": [
+            {
+              "unique_name": "definition_activity_01PV5CX1PUMI37QHKjNolCOogKmnddyNVFf",
+              "name": "Condition Branch",
+              "title": "NOT 200",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.status_code$",
+                  "operator": "ne",
+                  "right_operand": 200
+                },
+                "continue_on_failure": false,
+                "display_name": "NOT 200",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PV5D50Q3RD50v7Bs4ZRQBH7V9G03fkwpo",
+                  "name": "Completed",
+                  "title": "Failed",
+                  "type": "logic.completed",
+                  "base_type": "activity",
+                  "properties": {
+                    "completion_type": "failed-completed",
+                    "continue_on_failure": false,
+                    "display_name": "Failed",
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unique_name": "definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce",
+          "name": "JSONPath Query",
+          "title": "Grab test result",
+          "type": "corejava.jsonpathquery",
+          "base_type": "activity",
+          "properties": {
+            "action_timeout": 180,
+            "continue_on_failure": true,
+            "display_name": "Grab test result",
+            "input_json": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.response_body$",
+            "jsonpath_queries": [
+              {
+                "jsonpath_query": "$.endpointWeb.httpServer[0].errorType",
+                "jsonpath_query_name": "errorType",
+                "jsonpath_query_type": "string"
+              },
+              {
+                "jsonpath_query": "$.endpointWeb.httpServer[0].responseCode",
+                "jsonpath_query_name": "responseCode",
+                "jsonpath_query_type": "string"
+              }
+            ],
+            "skip_execution": false
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PWKT02VN2E00pPflTIGwza7p3k1gqQ5la",
+          "name": "Set Variables",
+          "title": "Set errorType responseCode variables",
+          "type": "core.set_multiple_variables",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": true,
+            "display_name": "Set errorType responseCode variables",
+            "skip_execution": false,
+            "variables_to_update": [
+              {
+                "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
+                "variable_value_new": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.jsonpath_queries.errorType$"
+              },
+              {
+                "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$",
+                "variable_value_new": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.jsonpath_queries.responseCode$"
+              }
+            ]
+          },
+          "object_type": "definition_activity"
+        },
+        {
+          "unique_name": "definition_activity_01PW484GTGT474n29sxc5d0sGilljcvEvKK",
+          "name": "Condition Block",
+          "title": "No results yet?",
+          "type": "logic.if_else",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "display_name": "No results yet?",
+            "skip_execution": false
+          },
+          "object_type": "definition_activity",
+          "blocks": [
+            {
+              "unique_name": "definition_activity_01PW484MQ7TC311dninnzpfl5kKLkqlfUpz",
+              "name": "Condition Branch",
+              "title": "No results",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": false
+                },
+                "continue_on_failure": false,
+                "display_name": "No results",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PW49CN28T3T43U4z76cV3FRM5Wm7Adkf5",
+                  "name": "Sleep",
+                  "title": "Sleep 60s",
+                  "type": "core.sleep",
+                  "base_type": "activity",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "display_name": "Sleep 60s",
+                    "skip_execution": false,
+                    "sleep_interval": 60
+                  },
+                  "object_type": "definition_activity"
+                },
+                {
+                  "unique_name": "definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO",
+                  "name": "HTTP Request",
+                  "title": "Fetch ThousandEyes Test Results",
+                  "type": "web-service.http_request",
+                  "base_type": "activity",
+                  "properties": {
+                    "accept": "application/json",
+                    "action_timeout": 180,
+                    "allow_auto_redirect": true,
+                    "content_type": "application/json",
+                    "continue_on_error_status_code": false,
+                    "continue_on_failure": false,
+                    "display_name": "Fetch ThousandEyes Test Results",
+                    "method": "GET",
+                    "relative_url": "/v6/endpoint-data/tests/web/http-server/$activity.definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1.output.jsonpath_queries.testId$",
+                    "runtime_user": {
+                      "target_default": true
+                    },
+                    "skip_execution": false,
+                    "target": {
+                      "override_workflow_target": true,
+                      "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
+                    }
+                  },
+                  "object_type": "definition_activity"
+                },
+                {
+                  "unique_name": "definition_activity_01PW48TZD9XDQ37s2NeWIi2yb6WBUHj0bDs",
+                  "name": "Condition Block",
+                  "title": "HTTP Request Failed?",
+                  "type": "logic.if_else",
+                  "base_type": "activity",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "display_name": "HTTP Request Failed?",
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity",
+                  "blocks": [
+                    {
+                      "unique_name": "definition_activity_01PW48U79WYB83ZNnoojn20htNd3S8J4mls",
+                      "name": "Condition Branch",
+                      "title": "NOT 200",
+                      "type": "logic.condition_block",
+                      "base_type": "activity",
+                      "properties": {
+                        "condition": {
+                          "left_operand": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.status_code$",
+                          "operator": "ne",
+                          "right_operand": 200
+                        },
+                        "continue_on_failure": false,
+                        "display_name": "NOT 200",
+                        "skip_execution": false
+                      },
+                      "object_type": "definition_activity",
+                      "actions": [
+                        {
+                          "unique_name": "definition_activity_01PW48U7VZKS83qEuYupRlu0S3zy0eN6Et1",
+                          "name": "Completed",
+                          "title": "Failed",
+                          "type": "logic.completed",
+                          "base_type": "activity",
+                          "properties": {
+                            "completion_type": "failed-completed",
+                            "continue_on_failure": false,
+                            "display_name": "Failed",
+                            "skip_execution": false
+                          },
+                          "object_type": "definition_activity"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "unique_name": "definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5",
+                  "name": "JSONPath Query",
+                  "title": "Grab test result",
+                  "type": "corejava.jsonpathquery",
+                  "base_type": "activity",
+                  "properties": {
+                    "action_timeout": 180,
+                    "continue_on_failure": true,
+                    "display_name": "Grab test result",
+                    "input_json": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.response_body$",
+                    "jsonpath_queries": [
+                      {
+                        "jsonpath_query": "$.endpointWeb.httpServer[0].errorType",
+                        "jsonpath_query_name": "errorType",
+                        "jsonpath_query_type": "string"
+                      },
+                      {
+                        "jsonpath_query": "$.endpointWeb.httpServer[0].responseCode",
+                        "jsonpath_query_name": "responseCode",
+                        "jsonpath_query_type": "string"
+                      }
+                    ],
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity"
+                },
+                {
+                  "unique_name": "definition_activity_01PWKURU0SKG81UUXpVIzyrp5gPIxL9FKuV",
+                  "name": "Set Variables",
+                  "title": "Set errorType responseCode variables",
+                  "type": "core.set_multiple_variables",
+                  "base_type": "activity",
+                  "properties": {
+                    "continue_on_failure": true,
+                    "display_name": "Set errorType responseCode variables",
+                    "skip_execution": false,
+                    "variables_to_update": [
+                      {
+                        "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
+                        "variable_value_new": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.jsonpath_queries.errorType$"
+                      },
+                      {
+                        "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$",
+                        "variable_value_new": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.jsonpath_queries.responseCode$"
+                      }
+                    ]
+                  },
+                  "object_type": "definition_activity"
+                },
+                {
+                  "unique_name": "definition_activity_01PWL5O6UJQ7G2gYQkhxbQRDQuNkuYNeLf8",
+                  "name": "Condition Block",
+                  "title": "results?",
+                  "type": "logic.if_else",
+                  "base_type": "activity",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "description": "did not eant to create infinite loop. check twice and if no results yet something went wrong. ",
+                    "display_name": "results?",
+                    "skip_execution": false
+                  },
+                  "object_type": "definition_activity",
+                  "blocks": [
+                    {
+                      "unique_name": "definition_activity_01PWL5OCWC15R5GEq9xEFMSVfYpmKwK5BpL",
+                      "name": "Condition Branch",
+                      "title": "No results",
+                      "type": "logic.condition_block",
+                      "base_type": "activity",
+                      "properties": {
+                        "condition": {
+                          "left_operand": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.succeeded$",
+                          "operator": "eq",
+                          "right_operand": false
+                        },
+                        "continue_on_failure": false,
+                        "display_name": "No results",
+                        "skip_execution": false
+                      },
+                      "object_type": "definition_activity",
+                      "actions": [
+                        {
+                          "unique_name": "definition_activity_01PWL5TW45NM0089A6g98Q2g9M4dDaJNo2M",
+                          "name": "Completed",
+                          "title": "No results...",
+                          "type": "logic.completed",
+                          "base_type": "activity",
+                          "properties": {
+                            "completion_type": "failed-completed",
+                            "continue_on_failure": false,
+                            "display_name": "No results...",
+                            "skip_execution": false
+                          },
+                          "object_type": "definition_activity"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unique_name": "definition_activity_01PV5CYK3QBJQ10iEsWGnKfUzXi2s8TCqsO",
+          "name": "Condition Block",
+          "title": "Test Result Error (not reachable?)",
+          "type": "logic.if_else",
+          "base_type": "activity",
+          "properties": {
+            "continue_on_failure": false,
+            "description": "Change webex to other medium if needed.",
+            "display_name": "Test Result Error (not reachable?)",
+            "skip_execution": false
+          },
+          "object_type": "definition_activity",
+          "blocks": [
+            {
+              "unique_name": "definition_activity_01PV5CYS9F4FN0tcN4zx0vzh1tc8jWSqnZH",
+              "name": "Condition Branch",
+              "title": "DOMAIN/URL NOT REACHBLE",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
+                  "operator": "ne",
+                  "right_operand": "None"
+                },
+                "continue_on_failure": false,
+                "display_name": "DOMAIN/URL NOT REACHBLE",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PVU7RDBFOO66QAQs5FeL4FhVe2fPaqkBv",
+                  "name": "Post Webex Confirmation! ✅",
+                  "title": "Post Webex Confirmation! ✅",
+                  "type": "workflow.atomic_workflow",
+                  "base_type": "subworkflow",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "display_name": "Post Webex Confirmation! ✅",
+                    "input": {
+                      "variable_workflow_01FGYY44G3MZ55amJu9YqgUeKS8GT49bZx3": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PVOO4WEJIBM34cMOpr3by0URYtFqVMQKt$",
+                      "variable_workflow_01FGYY44G3TK951Crpnd8g2izonyM4bFtpW": "Y2lzY29zcGFyazovL3VzL1JPT00vYzE3NjE4MzAtMDdkNi0xMWViLWE5ZTctYjcxMTViN2U4ZDc0",
+                      "variable_workflow_01FGYY44G3UPV3heGGc3vXCV47YL5WoI2X6": "",
+                      "variable_workflow_01FGYZ9BV4QTP19CuMwcW8QywvCP9ymx2BZ": "✅✅✅ - **Policy  enforced (destination not reachable from agents [HTTP $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$]) for $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB$: $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$** (Verified by Cisco ThousandEyes) - ✅ ✅✅"
+                    },
+                    "runtime_user": {
+                      "target_default": true
+                    },
+                    "skip_execution": false,
+                    "target": {
+                      "override_workflow_target": true,
+                      "target_id": "definition_target_01G9UGF18RL9E08ziyLuERwNvdLp5Y7JqZ1",
+                      "target_type": "web-service.endpoint"
+                    },
+                    "workflow_id": "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf"
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            },
+            {
+              "unique_name": "definition_activity_01PV5CYSTZ98D6gpwTuMNNc5N5SDjbEVRPm",
+              "name": "Condition Branch",
+              "title": "DOMAIN/URL REACHABLE",
+              "type": "logic.condition_block",
+              "base_type": "activity",
+              "properties": {
+                "condition": {
+                  "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
+                  "operator": "eq",
+                  "right_operand": "None"
+                },
+                "continue_on_failure": false,
+                "display_name": "DOMAIN/URL REACHABLE",
+                "skip_execution": false
+              },
+              "object_type": "definition_activity",
+              "actions": [
+                {
+                  "unique_name": "definition_activity_01PV5COJN76ZM0RYIQHVIpbNlD05b6uZDWc",
+                  "name": "Post Webex Warning! 🚨 ",
+                  "title": "Post Webex Warning! 🚨 ",
+                  "type": "workflow.atomic_workflow",
+                  "base_type": "subworkflow",
+                  "properties": {
+                    "continue_on_failure": false,
+                    "display_name": "Post Webex Warning! 🚨 ",
+                    "input": {
+                      "variable_workflow_01FGYY44G3MZ55amJu9YqgUeKS8GT49bZx3": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PVOO4WEJIBM34cMOpr3by0URYtFqVMQKt$",
+                      "variable_workflow_01FGYY44G3TK951Crpnd8g2izonyM4bFtpW": "Y2lzY29zcGFyazovL3VzL1JPT00vYzE3NjE4MzAtMDdkNi0xMWViLWE5ZTctYjcxMTViN2U4ZDc0",
+                      "variable_workflow_01FGYY44G3UPV3heGGc3vXCV47YL5WoI2X6": "",
+                      "variable_workflow_01FGYZ9BV4QTP19CuMwcW8QywvCP9ymx2BZ": "🚨🚨🚨 - **Policy NOT enforced (destination reachable from agents) for $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB$: $workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.input.variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f$** (Verified by Cisco ThousandEyes) - 🚨🚨🚨"
+                    },
+                    "runtime_user": {
+                      "target_default": true
+                    },
+                    "skip_execution": false,
+                    "target": {
+                      "override_workflow_target": true,
+                      "target_id": "definition_target_01G9UGF18RL9E08ziyLuERwNvdLp5Y7JqZ1",
+                      "target_type": "web-service.endpoint"
+                    },
+                    "workflow_id": "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf"
+                  },
+                  "object_type": "definition_activity"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m"
+      ]
+    },
+    "categories": {
+      "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m": {
+        "unique_name": "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m",
+        "name": "response",
+        "title": "response",
+        "type": "basic.category",
+        "base_type": "category",
+        "category_type": "custom",
+        "object_type": "category"
+      }
+    },
+    "targets": {
+      "definition_target_01G9UGF18RL9E08ziyLuERwNvdLp5Y7JqZ1": {
+        "unique_name": "definition_target_01G9UGF18RL9E08ziyLuERwNvdLp5Y7JqZ1",
+        "name": "Webex Teams",
+        "title": "Webex Teams",
+        "type": "web-service.endpoint",
+        "base_type": "target",
+        "object_type": "definition_target",
+        "properties": {
+          "description": "Webex Teams",
+          "disable_certificate_validation": false,
+          "display_name": "Webex Teams",
+          "host": "webexapis.com",
+          "no_runtime_user": true,
+          "port": 443,
+          "protocol": "https"
+        }
+      },
+      "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc": {
+        "unique_name": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc",
+        "name": "ThousandEyes target v6",
+        "title": "ThousandEyes target v6",
+        "type": "web-service.endpoint",
+        "base_type": "target",
+        "object_type": "definition_target",
+        "properties": {
+          "default_runtime_user_id": "definition_runtime_user_01PV5KXA5FSPX5bzAvnBBihAA83jp1SDXd3",
+          "disable_certificate_validation": false,
+          "display_name": "ThousandEyes target v6",
+          "host": "api.thousandeyes.com",
+          "ignore_proxy": false,
+          "no_runtime_user": false,
+          "protocol": "https"
+        }
+      }
+    },
+    "runtime_users": {
+      "definition_runtime_user_01PV5KXA5FSPX5bzAvnBBihAA83jp1SDXd3": {
+        "unique_name": "definition_runtime_user_01PV5KXA5FSPX5bzAvnBBihAA83jp1SDXd3",
+        "name": "ThousandEyes Account Keys CHRIVAND",
+        "title": "ThousandEyes Account Keys CHRIVAND",
+        "type": "runtime_user.web-service_basic_credentials",
+        "base_type": "runtime_user",
+        "object_type": "definition_runtime_user",
+        "properties": {
+          "auth_option": "*****",
+          "basic_password": "*****",
+          "basic_username": "*****",
+          "display_name": "ThousandEyes Account Keys CHRIVAND"
+        }
+      }
+    },
+    "variables": {
+      "variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7": {
+        "unique_name": "variable_01PWKOQHWVUU42BNP3yTIPLZmMPhn98Skp7",
+        "properties": {
+          "value": "189896",
+          "scope": "global",
+          "name": "thousandeyes_group_id",
+          "type": "datatype.string",
+          "description": "stores the group_id of the group of agents you want to create tests from. used in workflow to create instant test to check reachability of domains.",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "object_type": "variable"
+      }
+    },
+    "atomic_workflows": [
+      "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf"
+    ]
+  }
