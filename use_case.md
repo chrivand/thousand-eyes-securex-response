@@ -3,7 +3,7 @@
 * SecureX orchestration provides a no-to-low code approach for building automated workflows. 
 * These workflows can interact with various types of resources and systems, whether they’re from Cisco or a third-party. 
 * This repository contains a workflow that can be imported into SecureX orchestration.
-* 
+
 ## Business Case
 
 This SecureX response workflow allows users to right click on domain and url observable from Cisco SecureX threat response and check whether they are reachable from [Cisco ThousandEyes](https://www.thousandeyes.com/) endpoint agents. This is important for multiple reasons. First of all, an analyst can check whether a potential harmfull destination is reachable, and thus can cause a threat (e.g. a Command&Control server). Second it can also be used to verify the policy enforcement across your organization. Cisco ThousandEyes can for example be used to verify a domain block in Cisco Umbrella, offering a good SASE use case. Obviously there are more use cases that this is usefull for.
