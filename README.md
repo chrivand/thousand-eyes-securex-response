@@ -10,8 +10,6 @@ This SecureX response workflow allows users to right click on `domain` and `url`
 * If domain/URL is reachable it will send a Webex Teams notifaction to warn that policy is not enforced;
 * Vice versa, if domain/URL is not reachable, it will send a confirmation via Webex Teams that policy is enforced.
 
-![](screenshots/overview-example.png)
-
 > **Note:** Please test this properly before implementing in a production environment. This is a sample workflow!
 
 ## Required Targets
