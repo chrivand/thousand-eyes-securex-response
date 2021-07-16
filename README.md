@@ -56,6 +56,16 @@ This SecureX response workflow allows users to right click on `domain` and `url`
 
 ![](screenshots/global_var.png)
 
+## Usage
+
+You may use the response action via the drop down menu in SecureX threat response like so:
+
+![](screenshots/securex_threat_response.png)
+
+This will result in the following type of notifactions in Webex Teams:
+
+![](screenshots/webex_teams.png)
+
 ## Notes
 
 * Please test this properly before implementing in a production environment. This is a sample workflow!
