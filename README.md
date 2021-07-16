@@ -28,7 +28,7 @@ This SecureX response workflow allows users to right click on `domain` and `url`
 
 ## Setup instructions
 
-1. Browse to your SecureX orchestration instance. This wille be a different URL depending on the region your account is in: 
+1. Browse to your SecureX orchestration instance. This will be a different URL depending on the region your account is in: 
 
 * US: https://securex-ao.us.security.cisco.com/orch-ui/workflows/
 * EU: https://securex-ao.eu.security.cisco.com/orch-ui/workflows/
@@ -62,7 +62,7 @@ You may use the response action via the drop down menu in SecureX threat respons
 
 ![](screenshots/securex_threat_response.png)
 
-This will result in the following type of notifactions in Webex Teams:
+This will result in the following type of notifications in Webex Teams:
 
 ![](screenshots/webex_teams.png)
 
