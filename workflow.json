@@ -9,6 +9,71 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "internetbadguys.com",
+          "scope": "input",
+          "name": "observable_value",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "webex_token",
+          "type": "datatype.secure_string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PVOO4WEJIBM34cMOpr3by0URYtFqVMQKt",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "results_in_bool",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "All agents",
+          "scope": "input",
+          "name": "group_name_to_search",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PW2T3WARO7L3JCCzH4DEn6ERIKF7hxFfG",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "domain",
+          "scope": "input",
+          "name": "observable_type",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "",
           "scope": "local",
           "name": "responseCode",
@@ -30,71 +95,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "local",
-          "name": "results_in_bool",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "local",
-          "name": "webex_token",
-          "type": "datatype.secure_string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PVOO4WEJIBM34cMOpr3by0URYtFqVMQKt",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "internetbadguys.com",
-          "scope": "input",
-          "name": "observable_value",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PV5APIZQ1WQ5MfUEGNjMqOZgqiURuRs5f",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "domain",
-          "scope": "input",
-          "name": "observable_type",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PV5AKDVK6YU07dch7RGyamITP5jeRPdvB",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "All agents",
-          "scope": "input",
-          "name": "group_name_to_search",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PW2T3WARO7L3JCCzH4DEn6ERIKF7hxFfG",
         "object_type": "variable_workflow"
       }
     ],
@@ -399,440 +399,248 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01PVY40GT8YE65weLhlOS7iGJhlGPZXHKE8",
-        "name": "Sleep",
-        "title": "Sleep 30s",
-        "type": "core.sleep",
+        "unique_name": "definition_activity_01PXFL33FXFAP25Z7NaWndGDlhvG2w3uxpW",
+        "name": "While Loop",
+        "title": "While Bool is False",
+        "type": "logic.while",
         "base_type": "activity",
         "properties": {
           "continue_on_failure": false,
-          "display_name": "Sleep 30s",
-          "skip_execution": false,
-          "sleep_interval": 30
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf",
-        "name": "HTTP Request",
-        "title": "Fetch ThousandEyes Test Results",
-        "type": "web-service.http_request",
-        "base_type": "activity",
-        "properties": {
-          "accept": "application/json",
-          "action_timeout": 180,
-          "allow_auto_redirect": true,
-          "content_type": "application/json",
-          "continue_on_error_status_code": false,
-          "continue_on_failure": false,
-          "display_name": "Fetch ThousandEyes Test Results",
-          "method": "GET",
-          "relative_url": "/v6/endpoint-data/tests/web/http-server/$activity.definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1.output.jsonpath_queries.testId$.json",
-          "runtime_user": {
-            "target_default": true
-          },
-          "skip_execution": false,
-          "target": {
-            "override_workflow_target": true,
-            "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
-          }
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01PV5CWVN9D4T2VPSQ428zzmaAr83kKri2u",
-        "name": "Condition Block",
-        "title": "HTTP Request Failed?",
-        "type": "logic.if_else",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "HTTP Request Failed?",
+          "display_name": "While Bool is False",
           "skip_execution": false
         },
         "object_type": "definition_activity",
         "blocks": [
           {
-            "unique_name": "definition_activity_01PV5CX1PUMI37QHKjNolCOogKmnddyNVFf",
+            "unique_name": "definition_activity_01PXFL39GR5C14dTN0pLn2ct8nSuM86vdcD",
             "name": "Condition Branch",
-            "title": "NOT 200",
+            "title": "no results",
             "type": "logic.condition_block",
             "base_type": "activity",
             "properties": {
               "condition": {
-                "left_operand": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.status_code$",
-                "operator": "ne",
-                "right_operand": 200
-              },
-              "continue_on_failure": false,
-              "display_name": "NOT 200",
-              "skip_execution": false
-            },
-            "object_type": "definition_activity",
-            "actions": [
-              {
-                "unique_name": "definition_activity_01PV5D50Q3RD50v7Bs4ZRQBH7V9G03fkwpo",
-                "name": "Completed",
-                "title": "Failed",
-                "type": "logic.completed",
-                "base_type": "activity",
-                "properties": {
-                  "completion_type": "failed-completed",
-                  "continue_on_failure": false,
-                  "display_name": "Failed",
-                  "skip_execution": false
-                },
-                "object_type": "definition_activity"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "unique_name": "definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce",
-        "name": "JSONPath Query",
-        "title": "Grab test result",
-        "type": "corejava.jsonpathquery",
-        "base_type": "activity",
-        "properties": {
-          "action_timeout": 180,
-          "continue_on_failure": true,
-          "display_name": "Grab test result",
-          "input_json": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.response_body$",
-          "jsonpath_queries": [
-            {
-              "jsonpath_query": "$.endpointWeb.httpServer[0].errorType",
-              "jsonpath_query_name": "errorType",
-              "jsonpath_query_type": "string"
-            },
-            {
-              "jsonpath_query": "$.endpointWeb.httpServer[0].responseCode",
-              "jsonpath_query_name": "responseCode",
-              "jsonpath_query_type": "string"
-            }
-          ],
-          "skip_execution": false
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01PWKT02VN2E00pPflTIGwza7p3k1gqQ5la",
-        "name": "Set Variables",
-        "title": "Set errorType responseCode variables",
-        "type": "core.set_multiple_variables",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": true,
-          "display_name": "Set errorType responseCode variables",
-          "skip_execution": false,
-          "variables_to_update": [
-            {
-              "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
-              "variable_value_new": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.jsonpath_queries.errorType$"
-            },
-            {
-              "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$",
-              "variable_value_new": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.jsonpath_queries.responseCode$"
-            }
-          ]
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01PW484GTGT474n29sxc5d0sGilljcvEvKK",
-        "name": "Condition Block",
-        "title": "No results yet?",
-        "type": "logic.if_else",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "No results yet?",
-          "skip_execution": false
-        },
-        "object_type": "definition_activity",
-        "blocks": [
-          {
-            "unique_name": "definition_activity_01PXFJKXW6Y1U17AnS6kmsMcsBGzjfRyVUi",
-            "name": "Condition Branch",
-            "title": "Results are in!",
-            "type": "logic.condition_block",
-            "base_type": "activity",
-            "properties": {
-              "condition": {
-                "left_operand": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.succeeded$",
-                "operator": "eq",
-                "right_operand": true
-              },
-              "continue_on_failure": false,
-              "display_name": "Results are in!",
-              "skip_execution": false
-            },
-            "object_type": "definition_activity",
-            "actions": [
-              {
-                "unique_name": "definition_activity_01PXFKA8VXOF04feq4Yw0HGzBVXzxric5nM",
-                "name": "Set Variables",
-                "title": "Change boolean to True",
-                "type": "core.set_multiple_variables",
-                "base_type": "activity",
-                "properties": {
-                  "continue_on_failure": false,
-                  "display_name": "Change boolean to True",
-                  "skip_execution": false,
-                  "variables_to_update": [
-                    {
-                      "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD$",
-                      "variable_value_new": true
-                    }
-                  ]
-                },
-                "object_type": "definition_activity"
-              }
-            ]
-          },
-          {
-            "unique_name": "definition_activity_01PW484MQ7TC311dninnzpfl5kKLkqlfUpz",
-            "name": "Condition Branch",
-            "title": "No results",
-            "type": "logic.condition_block",
-            "base_type": "activity",
-            "properties": {
-              "condition": {
-                "left_operand": "$activity.definition_activity_01PVU5OJD8I9G602CVWfi4Wnj0yv7lofHce.output.succeeded$",
+                "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD$",
                 "operator": "eq",
                 "right_operand": false
               },
               "continue_on_failure": false,
-              "display_name": "No results",
+              "display_name": "no results",
               "skip_execution": false
             },
             "object_type": "definition_activity",
             "actions": [
               {
-                "unique_name": "definition_activity_01PXFL33FXFAP25Z7NaWndGDlhvG2w3uxpW",
-                "name": "While Loop",
-                "title": "While Bool is False",
-                "type": "logic.while",
+                "unique_name": "definition_activity_01PW49CN28T3T43U4z76cV3FRM5Wm7Adkf5",
+                "name": "Sleep",
+                "title": "Sleep 30s",
+                "type": "core.sleep",
                 "base_type": "activity",
                 "properties": {
                   "continue_on_failure": false,
-                  "display_name": "While Bool is False",
+                  "display_name": "Sleep 30s",
+                  "skip_execution": false,
+                  "sleep_interval": 30
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO",
+                "name": "HTTP Request",
+                "title": "Fetch ThousandEyes Test Results",
+                "type": "web-service.http_request",
+                "base_type": "activity",
+                "properties": {
+                  "accept": "application/json",
+                  "action_timeout": 180,
+                  "allow_auto_redirect": true,
+                  "content_type": "application/json",
+                  "continue_on_error_status_code": false,
+                  "continue_on_failure": false,
+                  "display_name": "Fetch ThousandEyes Test Results",
+                  "method": "GET",
+                  "relative_url": "/v6/endpoint-data/tests/web/http-server/$activity.definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1.output.jsonpath_queries.testId$",
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
+                  }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PW48TZD9XDQ37s2NeWIi2yb6WBUHj0bDs",
+                "name": "Condition Block",
+                "title": "HTTP Request Failed?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "HTTP Request Failed?",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
                 "blocks": [
                   {
-                    "unique_name": "definition_activity_01PXFL39GR5C14dTN0pLn2ct8nSuM86vdcD",
+                    "unique_name": "definition_activity_01PW48U79WYB83ZNnoojn20htNd3S8J4mls",
                     "name": "Condition Branch",
-                    "title": "no results",
+                    "title": "NOT 200",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD$",
-                        "operator": "eq",
-                        "right_operand": false
+                        "left_operand": "$activity.definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO.output.status_code$",
+                        "operator": "ne",
+                        "right_operand": 200
                       },
                       "continue_on_failure": false,
-                      "display_name": "no results",
+                      "display_name": "NOT 200",
                       "skip_execution": false
                     },
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01PW49CN28T3T43U4z76cV3FRM5Wm7Adkf5",
-                        "name": "Sleep",
-                        "title": "Sleep 30s",
-                        "type": "core.sleep",
+                        "unique_name": "definition_activity_01PW48U7VZKS83qEuYupRlu0S3zy0eN6Et1",
+                        "name": "Completed",
+                        "title": "Failed",
+                        "type": "logic.completed",
                         "base_type": "activity",
                         "properties": {
+                          "completion_type": "failed-completed",
                           "continue_on_failure": false,
-                          "display_name": "Sleep 30s",
-                          "skip_execution": false,
-                          "sleep_interval": 30
-                        },
-                        "object_type": "definition_activity"
-                      },
-                      {
-                        "unique_name": "definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO",
-                        "name": "HTTP Request",
-                        "title": "Fetch ThousandEyes Test Results",
-                        "type": "web-service.http_request",
-                        "base_type": "activity",
-                        "properties": {
-                          "accept": "application/json",
-                          "action_timeout": 180,
-                          "allow_auto_redirect": true,
-                          "content_type": "application/json",
-                          "continue_on_error_status_code": false,
-                          "continue_on_failure": false,
-                          "display_name": "Fetch ThousandEyes Test Results",
-                          "method": "GET",
-                          "relative_url": "/v6/endpoint-data/tests/web/http-server/$activity.definition_activity_01PVTPC8SRR953aTL1XCe5CeEmQFcYMdkr1.output.jsonpath_queries.testId$",
-                          "runtime_user": {
-                            "target_default": true
-                          },
-                          "skip_execution": false,
-                          "target": {
-                            "override_workflow_target": true,
-                            "target_id": "definition_target_01PV5L9HGXLTH3p6oAaGSi71FyVfzKZHMbc"
-                          }
-                        },
-                        "object_type": "definition_activity"
-                      },
-                      {
-                        "unique_name": "definition_activity_01PW48TZD9XDQ37s2NeWIi2yb6WBUHj0bDs",
-                        "name": "Condition Block",
-                        "title": "HTTP Request Failed?",
-                        "type": "logic.if_else",
-                        "base_type": "activity",
-                        "properties": {
-                          "continue_on_failure": false,
-                          "display_name": "HTTP Request Failed?",
-                          "skip_execution": false
-                        },
-                        "object_type": "definition_activity",
-                        "blocks": [
-                          {
-                            "unique_name": "definition_activity_01PW48U79WYB83ZNnoojn20htNd3S8J4mls",
-                            "name": "Condition Branch",
-                            "title": "NOT 200",
-                            "type": "logic.condition_block",
-                            "base_type": "activity",
-                            "properties": {
-                              "condition": {
-                                "left_operand": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.status_code$",
-                                "operator": "ne",
-                                "right_operand": 200
-                              },
-                              "continue_on_failure": false,
-                              "display_name": "NOT 200",
-                              "skip_execution": false
-                            },
-                            "object_type": "definition_activity",
-                            "actions": [
-                              {
-                                "unique_name": "definition_activity_01PW48U7VZKS83qEuYupRlu0S3zy0eN6Et1",
-                                "name": "Completed",
-                                "title": "Failed",
-                                "type": "logic.completed",
-                                "base_type": "activity",
-                                "properties": {
-                                  "completion_type": "failed-completed",
-                                  "continue_on_failure": false,
-                                  "display_name": "Failed",
-                                  "skip_execution": false
-                                },
-                                "object_type": "definition_activity"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "unique_name": "definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5",
-                        "name": "JSONPath Query",
-                        "title": "Grab test result",
-                        "type": "corejava.jsonpathquery",
-                        "base_type": "activity",
-                        "properties": {
-                          "action_timeout": 180,
-                          "continue_on_failure": true,
-                          "display_name": "Grab test result",
-                          "input_json": "$activity.definition_activity_01PV5CKIPOSIX1tMVx4ebtLWtoEQkg2Fhhf.output.response_body$",
-                          "jsonpath_queries": [
-                            {
-                              "jsonpath_query": "$.endpointWeb.httpServer[0].errorType",
-                              "jsonpath_query_name": "errorType",
-                              "jsonpath_query_type": "string"
-                            },
-                            {
-                              "jsonpath_query": "$.endpointWeb.httpServer[0].responseCode",
-                              "jsonpath_query_name": "responseCode",
-                              "jsonpath_query_type": "string"
-                            }
-                          ],
+                          "display_name": "Failed",
                           "skip_execution": false
                         },
                         "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5",
+                "name": "JSONPath Query",
+                "title": "Grab http test results",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Grab http test results",
+                  "input_json": "$activity.definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO.output.response_body$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.endpointWeb.httpServer",
+                      "jsonpath_query_name": "http_test_results",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01Q01EF8YXN8F0sCMgBmFzaFbyobtpzryWf",
+                "name": "JSONPath Query",
+                "title": "Grab responsecode and errortype from result",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Grab responsecode and errortype from result",
+                  "input_json": "$activity.definition_activity_01PW48PRIABKO0cxDT7w2DsoncbWExQxUmO.output.response_body$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.endpointWeb.httpServer[0].errorType",
+                      "jsonpath_query_name": "errorType",
+                      "jsonpath_query_type": "string"
+                    },
+                    {
+                      "jsonpath_query": "$.endpointWeb.httpServer[0].responseCode",
+                      "jsonpath_query_name": "responseCode",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PWKURU0SKG81UUXpVIzyrp5gPIxL9FKuV",
+                "name": "Set Variables",
+                "title": "Set errorType responseCode variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "Set errorType responseCode variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
+                      "variable_value_new": "$activity.definition_activity_01Q01EF8YXN8F0sCMgBmFzaFbyobtpzryWf.output.jsonpath_queries.errorType$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$",
+                      "variable_value_new": "$activity.definition_activity_01Q01EF8YXN8F0sCMgBmFzaFbyobtpzryWf.output.jsonpath_queries.responseCode$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PWL5O6UJQ7G2gYQkhxbQRDQuNkuYNeLf8",
+                "name": "Condition Block",
+                "title": "results?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "did not eant to create infinite loop. check twice and if no results yet something went wrong. ",
+                  "display_name": "results?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01PXFMN7EBONJ4BAVwGofmDP2ltGct4fnmS",
+                    "name": "Condition Branch",
+                    "title": "results are in!",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.jsonpath_queries.http_test_results$",
+                        "operator": "ne",
+                        "right_operand": "[]"
                       },
+                      "continue_on_failure": false,
+                      "display_name": "results are in!",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
                       {
-                        "unique_name": "definition_activity_01PWKURU0SKG81UUXpVIzyrp5gPIxL9FKuV",
+                        "unique_name": "definition_activity_01PXFN35KJVIF2rv4epL5qsQ4caPquR3Z9T",
                         "name": "Set Variables",
-                        "title": "Set errorType responseCode variables",
+                        "title": "Change boolean to True",
                         "type": "core.set_multiple_variables",
                         "base_type": "activity",
                         "properties": {
-                          "continue_on_failure": true,
-                          "display_name": "Set errorType responseCode variables",
+                          "continue_on_failure": false,
+                          "display_name": "Change boolean to True",
                           "skip_execution": false,
                           "variables_to_update": [
                             {
-                              "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTEMFG99P2kOk9DQzJ5tI5TS2zgbhqP$",
-                              "variable_value_new": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.jsonpath_queries.errorType$"
-                            },
-                            {
-                              "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PWKTIMPB8N84XMyjkzCjPxdfRpWMThwey$",
-                              "variable_value_new": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.jsonpath_queries.responseCode$"
+                              "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD$",
+                              "variable_value_new": true
                             }
                           ]
                         },
                         "object_type": "definition_activity"
-                      },
-                      {
-                        "unique_name": "definition_activity_01PWL5O6UJQ7G2gYQkhxbQRDQuNkuYNeLf8",
-                        "name": "Condition Block",
-                        "title": "results?",
-                        "type": "logic.if_else",
-                        "base_type": "activity",
-                        "properties": {
-                          "continue_on_failure": false,
-                          "description": "did not eant to create infinite loop. check twice and if no results yet something went wrong. ",
-                          "display_name": "results?",
-                          "skip_execution": false
-                        },
-                        "object_type": "definition_activity",
-                        "blocks": [
-                          {
-                            "unique_name": "definition_activity_01PXFMN7EBONJ4BAVwGofmDP2ltGct4fnmS",
-                            "name": "Condition Branch",
-                            "title": "results are in!",
-                            "type": "logic.condition_block",
-                            "base_type": "activity",
-                            "properties": {
-                              "condition": {
-                                "left_operand": "$activity.definition_activity_01PW48X9V1X1C32ObWR8a0gEUUDm4jCjUw5.output.succeeded$",
-                                "operator": "eq",
-                                "right_operand": true
-                              },
-                              "continue_on_failure": false,
-                              "display_name": "results are in!",
-                              "skip_execution": false
-                            },
-                            "object_type": "definition_activity",
-                            "actions": [
-                              {
-                                "unique_name": "definition_activity_01PXFN35KJVIF2rv4epL5qsQ4caPquR3Z9T",
-                                "name": "Set Variables",
-                                "title": "Change boolean to True",
-                                "type": "core.set_multiple_variables",
-                                "base_type": "activity",
-                                "properties": {
-                                  "continue_on_failure": false,
-                                  "display_name": "Change boolean to True",
-                                  "skip_execution": false,
-                                  "variables_to_update": [
-                                    {
-                                      "variable_to_update": "$workflow.definition_workflow_01PV58VCWSFYG7gz7IAgv7j4FQF07eonJqY.local.variable_workflow_01PXFJELFU21J7cNSBweCoCB5CEyVW2vOwD$",
-                                      "variable_value_new": true
-                                    }
-                                  ]
-                                },
-                                "object_type": "definition_activity"
-                              }
-                            ]
-                          }
-                        ]
                       }
                     ]
                   }
