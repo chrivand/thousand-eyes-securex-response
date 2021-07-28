@@ -1,4 +1,4 @@
-# SecureX orchestration workflow repository
+# Cisco ThousandEyes response workflow for SecureX
 
 * SecureX orchestration provides a no-to-low code approach for building automated workflows. 
 * These workflows can interact with various types of resources and systems, whether they’re from Cisco or a third-party. 
